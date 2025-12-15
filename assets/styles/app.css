@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@theme {
+    --color-primary: #2B3C3B;
+    --color-primary-hover: #275A61;
+    --color-background: #FAF7EF;
+    --color-accent: #FBE7AC;
+}
+
+html {
+  background: #FAF7EF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.font-secondary {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
