@@ -26,8 +26,34 @@
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-x-2 items-center">
             <a href="#" class="text-xs font-semibold text-white bg-primary rounded-full hover:bg-primary-hover transition duration-100 py-3 px-4">Obtenir mon estimation</a>
-            <div class="bg-accent size-9 shrink-0 rounded-full flex items-center justify-center">
-                {{ ux_icon('tabler:world', {'class':'size-5 rounded-full'}) }}
+            <div class="relative" data-controller="language-switcher" data-action="mouseenter->language-switcher#open mouseleave->language-switcher#close">
+                <div class="bg-accent size-9 shrink-0 rounded-full flex items-center justify-center cursor-pointer hover:bg-accent/70 transition duration-100">
+                    {{ ux_icon('tabler:world', {'class':'size-5 rounded-full'}) }}
+                </div>
+                <div data-language-switcher-target="menu" data-action="mouseenter->language-switcher#cancelClose mouseleave->language-switcher#close" class="hidden absolute right-0 z-10 mt-4 w-40 origin-top-right rounded-xl bg-white shadow-md ring-1 ring-black/5 focus:outline-none">
+                    <div class="py-2 space-y-1 px-2">
+                        <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'fr'})) }}"
+                           class="group flex items-center justify-between px-2 py-2 text-sm text-gray-900 hover:bg-gray-50 transition duration-100 rounded-lg">
+                            <span class="flex items-center gap-x-2 font-semibold">
+                                {{ ux_icon('circle-flags:fr', {'class':'size-5 rounded-full'}) }}
+                                FR
+                            </span>
+                            {% if app.request.locale == 'fr' %}
+                                {{ ux_icon('lucide:check', {'class':'text-primary size-4.5 shrink-0'}) }}
+                            {% endif %}
+                        </a>
+                        <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'en'})) }}"
+                           class="group flex items-center justify-between px-2 py-2 text-sm text-gray-900 hover:bg-gray-50 transition duration-100 rounded-lg">
+                            <span class="flex items-center gap-x-2">
+                                {{ ux_icon('circle-flags:en', {'class':'size-5 rounded-full'}) }}
+                                EN
+                            </span>
+                            {% if app.request.locale == 'en' %}
+                                {{ ux_icon('lucide:check', {'class':'text-primary size-4.5 shrink-0'}) }}
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -58,7 +84,7 @@
                             <div class="py-6 space-y-6">
                                 <div class="-mx-3">
                                     <button type="button" command="--toggle" commandfor="lang" class="flex aria-expanded:bg-white cursor-pointer w-full items-center justify-between rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-white transition duration-100">
-                                        <span class="flex items-center gap-x-3">
+                                        <span class="flex items-center gap-x-4">
                                             <div class="bg-accent size-9 rounded-full flex items-center justify-center">
                                                 {{ ux_icon('tabler:world', {'class':'size-5 rounded-full'}) }}
                                             </div>
@@ -75,7 +101,7 @@
                                     </button>
                                     <el-disclosure id="lang" hidden class="mt-2 [&:not([hidden])]:block">
                                         <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'fr'})) }}"
-                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-neutral-100 cursor-pointer flex justify-between items-center">
+                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-white cursor-pointer flex justify-between items-center">
                                             <span class="flex items-center gap-x-4">
                                                 {{ ux_icon('circle-flags:fr', {'class':'size-5 rounded-full'}) }}
                                                 FR
@@ -85,7 +111,7 @@
                                             {% endif %}
                                         </a>
                                         <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'en'})) }}"
-                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-neutral-100 cursor-pointer flex justify-between items-center">
+                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-white cursor-pointer flex justify-between items-center">
                                             <span class="flex items-center gap-x-4">
                                                 {{ ux_icon('circle-flags:en', {'class':'size-5 rounded-full'}) }}
                                                 EN
