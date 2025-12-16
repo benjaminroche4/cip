@@ -24,18 +24,11 @@
             <a href="#" class="text-sm/6 font-medium text-gray-900 hover:text-gray-500 transition duration-100">Marketplace</a>
             <a href="#" class="text-sm/6 font-medium text-gray-900 hover:text-gray-500 transition duration-100">Company</a>
         </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-x-2">
             <a href="#" class="text-xs font-semibold text-white bg-primary rounded-full hover:bg-primary-hover transition duration-100 py-3 px-4">Obtenir mon estimation</a>
-            {% if app.request.locale == 'en' %}
-                <a href="{{ path(currentRoute : currentParameters|merge({'_locale': 'fr'})) }}" class="text-sm/6 font-semibold text-gray-900 py-2.5 px-3.5 flex items-center gap-x-2">
-                    {{ ux_icon('flag:bl-4x3', {'class':'size-5'}) }}
-                </a>
-            {% endif %}
-            {% if app.request.locale == 'fr' %}
-                <a href="{{ path(currentRoute: currentParameters|merge({'_locale': 'en'})) }}" class="text-sm/6 font-semibold text-gray-900 py-2.5 px-3.5 flex items-center gap-x-2">
-                    {{ ux_icon('flag:gb-4x3', {'class':'size-5'}) }}
-                </a>
-            {% endif %}
+            <div class="bg-accent p-2 shrink-0 rounded-full">
+                {{ ux_icon('tabler:world', {'class':'size-5 rounded-full'}) }}
+            </div>
         </div>
     </nav>
     <el-dialog>
@@ -62,7 +55,47 @@
                                 <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-900 hover:bg-white transition duration-100">Marketplace</a>
                                 <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-900 hover:bg-white transition duration-100">Company</a>
                             </div>
-                            <div class="py-6">
+                            <div class="py-6 space-y-6">
+                                <div class="-mx-3">
+                                    <button type="button" command="--toggle" commandfor="lang" class="flex aria-expanded:bg-white cursor-pointer w-full items-center justify-between rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-white transition duration-100">
+                                        <span class="flex items-center gap-x-3">
+                                            <div class="bg-accent p-2 rounded-full">
+                                                {{ ux_icon('tabler:world', {'class':'size-5 rounded-full'}) }}
+                                            </div>
+                                            {% if app.request.locale == 'fr' %}
+                                                FR
+                                            {% endif %}
+                                            {% if app.request.locale == 'en' %}
+                                                EN
+                                            {% endif %}
+                                        </span>
+                                        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 flex-none [[aria-expanded='true']_&]:rotate-180">
+                                            <path d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <el-disclosure id="lang" hidden class="mt-2 [&:not([hidden])]:block">
+                                        <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'fr'})) }}"
+                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-neutral-100 cursor-pointer flex justify-between items-center">
+                                            <span class="flex items-center gap-x-4">
+                                                {{ ux_icon('circle-flags:fr', {'class':'size-5 rounded-full'}) }}
+                                                FR
+                                            </span>
+                                            {% if app.request.locale == 'fr' %}
+                                                {{ ux_icon('lucide:check', {'class':'text-primary size-4.5 shrink-0'}) }}
+                                            {% endif %}
+                                        </a>
+                                        <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'en'})) }}"
+                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-neutral-100 cursor-pointer flex justify-between items-center">
+                                            <span class="flex items-center gap-x-4">
+                                                {{ ux_icon('circle-flags:en', {'class':'size-5 rounded-full'}) }}
+                                                EN
+                                            </span>
+                                            {% if app.request.locale == 'en' %}
+                                                {{ ux_icon('lucide:check', {'class':'text-primary size-4.5 shrink-0'}) }}
+                                            {% endif %}
+                                        </a>
+                                    </el-disclosure>
+                                </div>
                                 <a href="#" class="-mx-3 block px-3 py-2.5 text-base/7 font-semibold text-white text-center hover:bg-gray-50 transition duration-100 rounded-full bg-primary hover:bg-primary-hover">Obtenir une estimation</a>
                             </div>
                         </div>
