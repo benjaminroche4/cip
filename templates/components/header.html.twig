@@ -30,7 +30,7 @@
                 <div class="bg-accent size-9 shrink-0 rounded-full flex items-center justify-center cursor-pointer hover:bg-accent/70 transition duration-100">
                     {{ ux_icon('tabler:world', {'class':'size-5 rounded-full'}) }}
                 </div>
-                <div data-language-switcher-target="menu" data-action="mouseenter->language-switcher#cancelClose mouseleave->language-switcher#close" class="hidden absolute right-0 z-10 mt-4 w-40 origin-top-right rounded-xl bg-white shadow-md ring-1 ring-black/5 focus:outline-none">
+                <div data-language-switcher-target="menu" data-action="mouseenter->language-switcher#cancelClose mouseleave->language-switcher#close" class="hidden absolute right-0 z-10 mt-4 w-40 origin-top-right rounded-xl bg-white shadow-md ring-1 ring-black/5 focus:outline-none transition duration-100 opacity-0 scale-95">
                     <div class="py-2 space-y-1 px-2">
                         <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'fr'})) }}"
                            class="group flex items-center justify-between px-2 py-2 text-sm text-gray-900 hover:bg-gray-50 transition duration-100 rounded-lg">
