@@ -34,7 +34,7 @@
                     <div class="py-2 space-y-1 px-2">
                         <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'fr'})) }}"
                            class="group flex items-center justify-between px-2 py-2 text-sm text-gray-900 hover:bg-gray-50 transition duration-100 rounded-lg">
-                            <span class="flex items-center gap-x-2 font-semibold">
+                            <span class="flex items-center gap-x-2 font-medium">
                                 {{ ux_icon('circle-flags:fr', {'class':'size-5 rounded-full'}) }}
                                 FR
                             </span>
@@ -44,7 +44,7 @@
                         </a>
                         <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'en'})) }}"
                            class="group flex items-center justify-between px-2 py-2 text-sm text-gray-900 hover:bg-gray-50 transition duration-100 rounded-lg">
-                            <span class="flex items-center gap-x-2">
+                            <span class="flex items-center gap-x-2 font-medium">
                                 {{ ux_icon('circle-flags:en', {'class':'size-5 rounded-full'}) }}
                                 EN
                             </span>
@@ -95,13 +95,13 @@
                                                 EN
                                             {% endif %}
                                         </span>
-                                        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 flex-none [[aria-expanded='true']_&]:rotate-180">
+                                        <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 flex-none [[aria-expanded='true']_&]:rotate-180 transition duration-100">
                                             <path d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
                                         </svg>
                                     </button>
-                                    <el-disclosure id="lang" hidden class="mt-2 [&:not([hidden])]:block">
+                                    <el-disclosure id="lang" hidden data-controller="mobile-disclosure" data-mobile-disclosure-target="content" class="mt-2 [&:not([hidden])]:block transition duration-100 origin-top">
                                         <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'fr'})) }}"
-                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-white cursor-pointer flex justify-between items-center">
+                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-white transition duration-100 cursor-pointer flex justify-between items-center">
                                             <span class="flex items-center gap-x-4">
                                                 {{ ux_icon('circle-flags:fr', {'class':'size-5 rounded-full'}) }}
                                                 FR
@@ -111,7 +111,7 @@
                                             {% endif %}
                                         </a>
                                         <a href="{{ path(currentRoute, currentParameters|merge({'_locale': 'en'})) }}"
-                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-white cursor-pointer flex justify-between items-center">
+                                           class="block rounded-lg py-2 px-3.5 text-sm/7 font-semibold text-gray-900 hover:bg-white transition duration-100 cursor-pointer flex justify-between items-center">
                                             <span class="flex items-center gap-x-4">
                                                 {{ ux_icon('circle-flags:en', {'class':'size-5 rounded-full'}) }}
                                                 EN
